@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContractPilot — AI Contracts for Freelancers</title>
+    <meta name="description" content="Generate professional contracts in 60 seconds. AI-powered drafting, review, and negotiation scripts for freelancers and small businesses. Free to start.">
+    <meta property="og:title" content="ContractPilot — AI Contracts for Freelancers">
+    <meta property="og:description" content="Describe your project → get a ready-to-sign contract. Review client contracts for traps. Get negotiation scripts. $0-9/mo.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ContractPilot — AI Contracts for Freelancers">
+    <meta name="twitter:description" content="AI contract generation, review, and negotiation for freelancers. 60 seconds to a professional contract.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #818cf8, #a78bfa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); }
+        .glow { box-shadow: 0 0 40px rgba(129,140,248,0.15); }
+        .typing-cursor { animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        .contract-line { animation: typeLine 0.3s ease-out; }
+        @keyframes typeLine { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        .risk-high { border-left: 3px solid #ef4444; }
+        .risk-medium { border-left: 3px solid #f59e0b; }
+        .risk-low { border-left: 3px solid #22c55e; }
+    </style>
+</head>
+<body class="bg-[#0a0a0f] text-gray-200 antialiased">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0a0a0f]/80 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">📝</span>
+                <span class="text-xl font-bold">Contract<span class="text-indigo-400">Pilot</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+                <a href="#demo" class="hover:text-white transition">Demo</a>
+                <a href="#review" class="hover:text-white transition">Review</a>
+                <a href="#templates" class="hover:text-white transition">Templates</a>
+                <a href="#pricing" class="hover:text-white transition">Pricing</a>
+            </div>
+            <button onclick="document.getElementById('waitlist-section').scrollIntoView({behavior:'smooth'})" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+                Join Waitlist
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-1.5 text-sm text-indigo-300 mb-6">
+                <span class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></span>
+                Draft + Review + Negotiate — One Tool
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                Professional contracts<br>
+                <span class="gradient-text">in 60 seconds</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+                Describe your project → get a ready-to-sign contract. Upload a client's contract → spot the traps. Get negotiation scripts to fight back. Free to start.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3.5 rounded-xl text-lg font-semibold transition shadow-lg shadow-indigo-500/25">
+                    Try the Demo →
+                </button>
+                <button onclick="document.getElementById('review').scrollIntoView({behavior:'smooth'})" class="glass text-gray-300 hover:text-white px-8 py-3.5 rounded-xl text-lg font-medium transition">
+                    Review a Contract
+                </button>
+            </div>
+
+            <!-- Social proof -->
+            <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> No lawyer needed
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> PDF & DOCX export
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> 6 industry templates
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> Free tier forever
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+            <div class="glass rounded-2xl p-6 text-center">
+                <div class="text-4xl mb-3">💸</div>
+                <div class="text-2xl font-bold text-red-400 mb-1">$200–500</div>
+                <p class="text-gray-400 text-sm">Average lawyer cost per contract</p>
+            </div>
+            <div class="glass rounded-2xl p-6 text-center">
+                <div class="text-4xl mb-3">😰</div>
+                <div class="text-2xl font-bold text-amber-400 mb-1">67%</div>
+                <p class="text-gray-400 text-sm">of freelancers skip contracts entirely</p>
+            </div>
+            <div class="glass rounded-2xl p-6 text-center">
+                <div class="text-4xl mb-3">⚡</div>
+                <div class="text-2xl font-bold text-green-400 mb-1">60 sec</div>
+                <p class="text-gray-400 text-sm">ContractPilot: describe → done</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contract Generator Demo -->
+    <section id="demo" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Generate a Contract</h2>
+                <p class="text-gray-400">Select a project type, fill in the details, and watch AI draft your contract.</p>
+            </div>
+
+            <div class="glass rounded-2xl p-8 glow">
+                <!-- Step 1: Project Type -->
+                <div id="gen-step-1">
+                    <p class="text-sm text-gray-400 mb-4 uppercase tracking-wide">Step 1 — What's the project?</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="project-types">
+                        <button onclick="selectProjectType(this,'web')" class="proj-btn glass rounded-xl p-4 text-left hover:border-indigo-500/50 transition">
+                            <div class="text-2xl mb-1">💻</div>
+                            <div class="font-semibold text-sm">Web Development</div>
+                        </button>
+                        <button onclick="selectProjectType(this,'design')" class="proj-btn glass rounded-xl p-4 text-left hover:border-indigo-500/50 transition">
+                            <div class="text-2xl mb-1">🎨</div>
+                            <div class="font-semibold text-sm">Design / Branding</div>
+                        </button>
+                        <button onclick="selectProjectType(this,'content')" class="proj-btn glass rounded-xl p-4 text-left hover:border-indigo-500/50 transition">
+                            <div class="text-2xl mb-1">✍️</div>
+                            <div class="font-semibold text-sm">Content Writing</div>
+                        </button>
+                        <button onclick="selectProjectType(this,'consulting')" class="proj-btn glass rounded-xl p-4 text-left hover:border-indigo-500/50 transition">
+                            <div class="text-2xl mb-1">📊</div>
+                            <div class="font-semibold text-sm">Consulting</div>
+                        </button>
+                        <button onclick="selectProjectType(this,'photo')" class="proj-btn glass rounded-xl p-4 text-left hover:border-indigo-500/50 transition">
+                            <div class="text-2xl mb-1">📸</div>
+                            <div class="font-semibold text-sm">Photography</div>
+                        </button>
+                        <button onclick="selectProjectType(this,'coaching')" class="proj-btn glass rounded-xl p-4 text-left hover:border-indigo-500/50 transition">
+                            <div class="text-2xl mb-1">🧠</div>
+                            <div class="font-semibold text-sm">Coaching</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Details (hidden initially) -->
+                <div id="gen-step-2" class="hidden mt-6 fade-in">
+                    <p class="text-sm text-gray-400 mb-4 uppercase tracking-wide">Step 2 — Project details</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Your Name / Business</label>
+                            <input id="inp-your-name" type="text" placeholder="Acme Studios" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Client Name</label>
+                            <input id="inp-client-name" type="text" placeholder="Jane Smith" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Project Value</label>
+                            <input id="inp-value" type="text" placeholder="$5,000" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Timeline</label>
+                            <input id="inp-timeline" type="text" placeholder="6 weeks" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Smart Clauses -->
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-400 mb-3">Smart Clauses (toggle on/off)</p>
+                        <div class="flex flex-wrap gap-2" id="clause-toggles">
+                            <button onclick="toggleClause(this)" class="clause-btn active bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 px-3 py-1.5 rounded-full text-sm transition" data-clause="ip">🔒 IP Ownership</button>
+                            <button onclick="toggleClause(this)" class="clause-btn active bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 px-3 py-1.5 rounded-full text-sm transition" data-clause="payment">💳 Payment Terms</button>
+                            <button onclick="toggleClause(this)" class="clause-btn active bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 px-3 py-1.5 rounded-full text-sm transition" data-clause="revisions">🔄 Revision Limits</button>
+                            <button onclick="toggleClause(this)" class="clause-btn bg-white/5 border border-white/10 text-gray-400 px-3 py-1.5 rounded-full text-sm transition" data-clause="nda">🤐 NDA</button>
+                            <button onclick="toggleClause(this)" class="clause-btn active bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 px-3 py-1.5 rounded-full text-sm transition" data-clause="killfee">💀 Kill Fee</button>
+                            <button onclick="toggleClause(this)" class="clause-btn bg-white/5 border border-white/10 text-gray-400 px-3 py-1.5 rounded-full text-sm transition" data-clause="noncompete">🚫 Non-Compete</button>
+                        </div>
+                    </div>
+
+                    <button onclick="generateContract()" class="mt-6 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition w-full md:w-auto">
+                        ⚡ Generate Contract
+                    </button>
+                </div>
+
+                <!-- Step 3: Generated Contract -->
+                <div id="gen-step-3" class="hidden mt-6 fade-in">
+                    <div class="flex items-center justify-between mb-4">
+                        <p class="text-sm text-gray-400 uppercase tracking-wide">Generated Contract</p>
+                        <div class="flex gap-2">
+                            <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">AI Generated</span>
+                            <span class="text-xs text-gray-500">~60 seconds</span>
+                        </div>
+                    </div>
+                    <div id="contract-output" class="bg-black/30 rounded-xl p-6 font-mono text-sm leading-relaxed max-h-96 overflow-y-auto border border-white/5">
+                    </div>
+                    <div class="flex gap-3 mt-4">
+                        <button class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">📄 Export PDF</button>
+                        <button class="glass text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">📝 Export DOCX</button>
+                        <button onclick="resetGenerator()" class="glass text-gray-400 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">↩ Start Over</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contract Review Demo -->
+    <section id="review" class="py-20 px-6 bg-[#0d0d14]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Review a Client's Contract</h2>
+                <p class="text-gray-400">Paste any contract text and get instant risk analysis with negotiation scripts.</p>
+            </div>
+
+            <div class="glass rounded-2xl p-8">
+                <div id="review-input">
+                    <textarea id="review-text" rows="6" placeholder="Paste a contract or clause here... (or click a sample below)" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none resize-none text-sm"></textarea>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <button onclick="loadSampleContract('unfair')" class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full hover:bg-red-500/20 transition">⚠️ Unfair IP clause</button>
+                        <button onclick="loadSampleContract('late')" class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1.5 rounded-full hover:bg-amber-500/20 transition">⏰ Late payment trap</button>
+                        <button onclick="loadSampleContract('scope')" class="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1.5 rounded-full hover:bg-purple-500/20 transition">📐 Unlimited scope creep</button>
+                    </div>
+                    <button onclick="reviewContract()" class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition">
+                        🔍 Analyze Contract
+                    </button>
+                </div>
+
+                <div id="review-output" class="hidden mt-6 fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div id="risk-badge" class="text-sm font-semibold px-3 py-1 rounded-full"></div>
+                        <span class="text-gray-400 text-sm" id="risk-summary"></span>
+                    </div>
+                    <div id="risk-items" class="space-y-4"></div>
+                    <button onclick="resetReview()" class="mt-6 glass text-gray-400 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">↩ Review Another</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Gallery -->
+    <section id="templates" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Template Library</h2>
+                <p class="text-gray-400">Start from a template, customize with AI. Every clause battle-tested.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="glass rounded-xl p-6 hover:border-indigo-500/30 transition">
+                    <div class="text-3xl mb-3">💻</div>
+                    <h3 class="font-semibold mb-1">Web Development</h3>
+                    <p class="text-sm text-gray-400 mb-3">Milestone payments, code ownership, hosting handoff, revision rounds.</p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">IP Transfer</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">3 Revisions</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">50% Upfront</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-6 hover:border-indigo-500/30 transition">
+                    <div class="text-3xl mb-3">🎨</div>
+                    <h3 class="font-semibold mb-1">Design & Branding</h3>
+                    <p class="text-sm text-gray-400 mb-3">Usage rights, source files, brand guidelines delivery, kill fee.</p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Usage License</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Source Files</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Kill Fee</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-6 hover:border-indigo-500/30 transition">
+                    <div class="text-3xl mb-3">✍️</div>
+                    <h3 class="font-semibold mb-1">Content Writing</h3>
+                    <p class="text-sm text-gray-400 mb-3">Word count, SEO requirements, byline rights, revision policy.</p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Byline</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">SEO Brief</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">2 Revisions</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-6 hover:border-indigo-500/30 transition">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h3 class="font-semibold mb-1">Consulting</h3>
+                    <p class="text-sm text-gray-400 mb-3">Hourly/retainer billing, deliverables, confidentiality, non-solicitation.</p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Retainer</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">NDA</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Monthly Reports</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-6 hover:border-indigo-500/30 transition">
+                    <div class="text-3xl mb-3">📸</div>
+                    <h3 class="font-semibold mb-1">Photography</h3>
+                    <p class="text-sm text-gray-400 mb-3">Shoot terms, image licensing, editing rounds, model releases.</p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Image License</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">RAW Files</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Rain Date</span>
+                    </div>
+                </div>
+                <div class="glass rounded-xl p-6 hover:border-indigo-500/30 transition">
+                    <div class="text-3xl mb-3">🧠</div>
+                    <h3 class="font-semibold mb-1">Coaching</h3>
+                    <p class="text-sm text-gray-400 mb-3">Session terms, cancellation policy, confidentiality, results disclaimer.</p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">No-Show Fee</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Confidential</span>
+                        <span class="text-xs bg-white/5 px-2 py-0.5 rounded">Disclaimer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 px-6 bg-[#0d0d14]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Three Superpowers, One Tool</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600/20 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">⚡</div>
+                    <h3 class="font-bold text-lg mb-2">Draft</h3>
+                    <p class="text-gray-400 text-sm">Describe your project in plain English. Get a professional, legally-sound contract in 60 seconds.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-amber-600/20 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🔍</div>
+                    <h3 class="font-bold text-lg mb-2">Review</h3>
+                    <p class="text-gray-400 text-sm">Upload a client's contract. AI flags unfavorable terms, hidden traps, and missing protections.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">🗣️</div>
+                    <h3 class="font-bold text-lg mb-2">Negotiate</h3>
+                    <p class="text-gray-400 text-sm">Get copy-paste scripts to push back on unfair clauses. Never accept bad terms again.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">How We Compare</h2>
+                <p class="text-gray-400">ContractPilot gives you what enterprise tools charge $1,000+/mo for.</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th class="text-left py-4 px-4 text-gray-400 font-medium">Feature</th>
+                            <th class="py-4 px-4 text-center text-indigo-400 font-bold">ContractPilot</th>
+                            <th class="py-4 px-4 text-center text-gray-400 font-medium">LegalZoom</th>
+                            <th class="py-4 px-4 text-center text-gray-400 font-medium">Indy</th>
+                            <th class="py-4 px-4 text-center text-gray-400 font-medium">Juro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">Price</td><td class="text-center text-indigo-400 font-semibold">$0–9/mo</td><td class="text-center">$20+/mo</td><td class="text-center">$9–12/mo</td><td class="text-center">$1,250+/mo</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">AI Contract Drafting</td><td class="text-center text-green-400">✓</td><td class="text-center text-red-400">✗</td><td class="text-center text-green-400">✓</td><td class="text-center text-green-400">✓</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">AI Contract Review</td><td class="text-center text-green-400">✓</td><td class="text-center text-yellow-400">Basic</td><td class="text-center text-red-400">✗</td><td class="text-center text-green-400">✓</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">Negotiation Scripts</td><td class="text-center text-green-400">✓</td><td class="text-center text-red-400">✗</td><td class="text-center text-red-400">✗</td><td class="text-center text-red-400">✗</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">Freelancer Templates</td><td class="text-center text-green-400">6 types</td><td class="text-center text-yellow-400">Generic</td><td class="text-center text-green-400">✓</td><td class="text-center text-red-400">Enterprise</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">Smart Clause Toggles</td><td class="text-center text-green-400">✓</td><td class="text-center text-red-400">✗</td><td class="text-center text-red-400">✗</td><td class="text-center text-red-400">✗</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-3 px-4">PDF + DOCX Export</td><td class="text-center text-green-400">✓</td><td class="text-center text-green-400">✓</td><td class="text-center text-green-400">✓</td><td class="text-center text-green-400">✓</td></tr>
+                        <tr><td class="py-3 px-4">Free Tier</td><td class="text-center text-green-400">3/mo</td><td class="text-center text-red-400">✗</td><td class="text-center text-yellow-400">Limited</td><td class="text-center text-red-400">✗</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-6 bg-[#0d0d14]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Simple Pricing</h2>
+                <p class="text-gray-400">No per-contract fees. No surprises.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Free -->
+                <div class="glass rounded-2xl p-8">
+                    <div class="text-sm text-gray-400 uppercase tracking-wide mb-2">Free</div>
+                    <div class="text-4xl font-bold mb-1">$0</div>
+                    <div class="text-sm text-gray-500 mb-6">forever</div>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> 3 contracts/month</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Basic templates</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> PDF export</li>
+                        <li class="flex items-center gap-2"><span class="text-gray-600">✗</span> Contract review</li>
+                        <li class="flex items-center gap-2"><span class="text-gray-600">✗</span> Negotiation scripts</li>
+                    </ul>
+                    <button onclick="document.getElementById('waitlist-section').scrollIntoView({behavior:'smooth'})" class="w-full glass text-gray-300 hover:text-white py-3 rounded-xl font-medium transition">
+                        Get Started Free
+                    </button>
+                </div>
+
+                <!-- Pro -->
+                <div class="glass rounded-2xl p-8 border-indigo-500/30 glow relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
+                    <div class="text-sm text-indigo-400 uppercase tracking-wide mb-2">Pro</div>
+                    <div class="text-4xl font-bold mb-1">$9<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+                    <div class="text-sm text-gray-500 mb-6">billed monthly</div>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Unlimited contracts</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> All 6 templates</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> AI contract review</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Negotiation scripts</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> PDF + DOCX export</li>
+                    </ul>
+                    <button onclick="document.getElementById('waitlist-section').scrollIntoView({behavior:'smooth'})" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-semibold transition">
+                        Join Waitlist
+                    </button>
+                </div>
+
+                <!-- Business -->
+                <div class="glass rounded-2xl p-8">
+                    <div class="text-sm text-gray-400 uppercase tracking-wide mb-2">Business</div>
+                    <div class="text-4xl font-bold mb-1">$19<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+                    <div class="text-sm text-gray-500 mb-6">billed monthly</div>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Everything in Pro</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Team access (5 seats)</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> White-label export</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> API access</li>
+                        <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Bulk generation</li>
+                    </ul>
+                    <button onclick="document.getElementById('waitlist-section').scrollIntoView({behavior:'smooth'})" class="w-full glass text-gray-300 hover:text-white py-3 rounded-xl font-medium transition">
+                        Join Waitlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section id="waitlist-section" class="py-20 px-6">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-3">Join the Waitlist</h2>
+            <p class="text-gray-400 mb-8">Be first to get access when we launch. Early adopters get Pro free for 3 months.</p>
+
+            <div id="waitlist-form" class="glass rounded-2xl p-8">
+                <div class="space-y-4">
+                    <input id="wl-email" type="email" placeholder="your@email.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none">
+                    <select id="wl-role" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-gray-400 focus:border-indigo-500 focus:outline-none appearance-none">
+                        <option value="">What describes you best?</option>
+                        <option value="freelancer">Freelancer / Solopreneur</option>
+                        <option value="agency">Small Agency (2-10 people)</option>
+                        <option value="lawyer">Lawyer / Legal Professional</option>
+                        <option value="consultant">Consultant / Coach</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="wl-contracts" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-gray-400 focus:border-indigo-500 focus:outline-none appearance-none">
+                        <option value="">How many contracts/month?</option>
+                        <option value="1-3">1-3</option>
+                        <option value="4-10">4-10</option>
+                        <option value="11-25">11-25</option>
+                        <option value="25+">25+</option>
+                    </select>
+                    <button onclick="submitWaitlist()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3.5 rounded-xl font-semibold transition text-lg">
+                        🚀 Get Early Access
+                    </button>
+                </div>
+            </div>
+
+            <div id="waitlist-success" class="hidden glass rounded-2xl p-8 fade-in">
+                <div class="text-5xl mb-4">🎉</div>
+                <h3 class="text-xl font-bold mb-2">You're on the list!</h3>
+                <p class="text-gray-400">We'll email you when ContractPilot launches. Early adopters get Pro free for 3 months.</p>
+                <div class="mt-4 bg-indigo-600/10 rounded-xl p-3">
+                    <p class="text-sm text-indigo-300" id="waitlist-position"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+            <div class="flex items-center gap-2">
+                <span>📝</span>
+                <span>Contract<span class="text-indigo-400">Pilot</span></span>
+                <span class="mx-2">·</span>
+                <span>An <a href="https://atalovesyou.github.io/opensphere-labs/" class="text-indigo-400 hover:text-indigo-300 transition">OpenSphere Labs</a> product</span>
+            </div>
+            <div>© 2026 OpenSphere Corp. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    // State
+    let selectedType = null;
+    const activeClauses = new Set(['ip','payment','revisions','killfee']);
+
+    // Contract templates
+    const contractTemplates = {
+        web: {
+            title: 'WEB DEVELOPMENT AGREEMENT',
+            scope: 'design, develop, and deliver a custom website including front-end development, responsive design, and CMS integration',
+            deliverables: ['Responsive website (desktop, tablet, mobile)', 'CMS integration and admin panel', 'Cross-browser testing report', 'Source code and documentation']
+        },
+        design: {
+            title: 'DESIGN SERVICES AGREEMENT',
+            scope: 'create brand identity and design deliverables including logo design, brand guidelines, and marketing collateral',
+            deliverables: ['Logo in SVG, PNG, and EPS formats', 'Brand guidelines document', 'Color palette and typography spec', 'Source files (Figma/AI)']
+        },
+        content: {
+            title: 'CONTENT WRITING AGREEMENT',
+            scope: 'research, write, and deliver original content including blog posts, website copy, and SEO-optimized articles',
+            deliverables: ['Written content per agreed word count', 'SEO keyword integration', 'One round of revisions per piece', 'Plagiarism check report']
+        },
+        consulting: {
+            title: 'CONSULTING SERVICES AGREEMENT',
+            scope: 'provide strategic consulting services including analysis, recommendations, and implementation guidance',
+            deliverables: ['Initial assessment report', 'Strategic recommendations document', 'Monthly progress reports', 'Final summary and action plan']
+        },
+        photo: {
+            title: 'PHOTOGRAPHY SERVICES AGREEMENT',
+            scope: 'provide professional photography services including shooting, editing, and delivery of final images',
+            deliverables: ['Edited high-resolution images', 'Online gallery for selection', 'Digital delivery via secure link', 'Print-ready files upon request']
+        },
+        coaching: {
+            title: 'COACHING SERVICES AGREEMENT',
+            scope: 'provide professional coaching sessions including goal setting, accountability, and personalized guidance',
+            deliverables: ['Scheduled coaching sessions', 'Session notes and action items', 'Progress tracking framework', 'Resource recommendations']
+        }
+    };
+
+    // Sample contracts for review
+    const sampleContracts = {
+        unfair: `INTELLECTUAL PROPERTY. All work product, including but not limited to concepts, drafts, notes, sketches, designs, code, and any materials created or developed in connection with the Services, whether or not incorporated into the final deliverables, shall be deemed "work made for hire" and shall be the sole and exclusive property of the Client. Contractor hereby irrevocably assigns all right, title, and interest in and to any work product to Client, including any and all patent, copyright, trademark, and trade secret rights. Contractor waives all moral rights in the work product.`,
+        late: `PAYMENT TERMS. Client shall pay Contractor within ninety (90) days of receipt of invoice. Late payments shall not accrue interest. In the event of a dispute regarding any invoice, Client may withhold payment of the disputed amount indefinitely until such dispute is resolved to Client's satisfaction. Contractor shall continue to perform Services during any payment dispute. Contractor may not suspend or terminate Services due to non-payment.`,
+        scope: `SCOPE OF WORK. Contractor agrees to perform all services reasonably requested by Client in connection with the Project, including but not limited to any modifications, enhancements, additions, or changes requested by Client at any time during the term of this Agreement. Contractor acknowledges that the scope of work may evolve and agrees to accommodate all reasonable changes without additional compensation. Additional rounds of revisions shall be provided at no extra charge until Client is fully satisfied with the deliverables.`
+    };
+
+    const reviewResults = {
+        unfair: {
+            score: 'HIGH RISK',
+            color: 'red',
+            summary: '3 critical issues found — this clause heavily favors the client',
+            items: [
+                { level: 'high', title: 'Total IP Assignment Including Drafts', desc: 'This assigns ALL work — including concepts, sketches, and drafts you never delivered. You lose rights to unused ideas that could be repurposed.', script: '"I\'m happy to assign IP for the final deliverables, but I need to retain rights to preliminary concepts and unused drafts. Proposed revision: IP transfer applies only to accepted final deliverables."' },
+                { level: 'high', title: 'Moral Rights Waiver', desc: 'Waiving moral rights means the client can alter your work, use it out of context, or remove your attribution without consent.', script: '"I\'d like to retain moral rights, specifically the right to attribution. This is standard in creative contracts and doesn\'t limit your usage of the work."' },
+                { level: 'medium', title: 'Work-for-Hire Classification', desc: 'Classifying freelance work as "work made for hire" may have tax and employment law implications. True work-for-hire only applies to specific categories.', script: '"Let\'s structure this as an IP assignment upon final payment rather than work-for-hire. This gives you the same ownership rights while keeping the contractor relationship clean."' }
+            ]
+        },
+        late: {
+            score: 'HIGH RISK',
+            color: 'red',
+            summary: '4 critical issues — this payment clause is designed to delay and withhold your money',
+            items: [
+                { level: 'high', title: '90-Day Payment Terms', desc: 'Industry standard is Net 15-30. Net 90 means you\'re financing the client\'s project for 3 months.', script: '"I work on Net 15 payment terms. I\'m flexible on Net 30 for larger projects, but Net 90 isn\'t feasible for my business. Can we adjust to Net 30?"' },
+                { level: 'high', title: 'No Late Payment Interest', desc: 'Without interest penalties, there\'s no financial incentive for the client to pay on time.', script: '"I\'d like to add a standard late payment clause: 1.5% monthly interest on overdue invoices, which is standard in freelance agreements."' },
+                { level: 'high', title: 'Indefinite Withholding on Disputes', desc: 'The client can dispute any invoice and withhold payment forever. This is a massive red flag.', script: '"I understand the need for a dispute process, but indefinite withholding isn\'t workable. Proposed: undisputed portions are paid on time, and disputed amounts go through a 14-day resolution process."' },
+                { level: 'high', title: 'Must Continue Work During Non-Payment', desc: 'You\'re required to keep working even if you\'re not getting paid. This removes your only leverage.', script: '"I need the right to pause work if payment is more than 15 days overdue. This is standard protection and ensures both parties stay accountable."' }
+            ]
+        },
+        scope: {
+            score: 'HIGH RISK',
+            color: 'red',
+            summary: '3 critical issues — unlimited scope creep with no additional compensation',
+            items: [
+                { level: 'high', title: 'Unlimited Scope Changes', desc: '"Any modifications, enhancements, additions, or changes" — this is a blank check. The client can double the project scope and you can\'t charge more.', script: '"I\'m happy to accommodate changes, but they should go through a change order process. Any work outside the original scope will be quoted separately and requires written approval before starting."' },
+                { level: 'high', title: 'No Additional Compensation for Changes', desc: '"Without additional compensation" — explicitly states you won\'t be paid more for extra work. This is the most dangerous clause in the contract.', script: '"All scope changes beyond the original SOW need to be handled through a change order with agreed pricing. This protects both of us and keeps the project budget transparent."' },
+                { level: 'medium', title: 'Unlimited Revisions', desc: '"Until Client is fully satisfied" with no revision limit means you could be revising forever.', script: '"I include [2-3] rounds of revisions in the base price. Additional revisions are billed at my hourly rate of $[X]. This ensures quality feedback loops without open-ended rework."' }
+            ]
+        }
+    };
+
+    function selectProjectType(el, type) {
+        selectedType = type;
+        document.querySelectorAll('.proj-btn').forEach(b => b.classList.remove('border-indigo-500','bg-indigo-600/10'));
+        el.classList.add('border-indigo-500','bg-indigo-600/10');
+        document.getElementById('gen-step-2').classList.remove('hidden');
+    }
+
+    function toggleClause(el) {
+        const clause = el.dataset.clause;
+        if (activeClauses.has(clause)) {
+            activeClauses.delete(clause);
+            el.classList.remove('active','bg-indigo-600/30','border-indigo-500/40','text-indigo-300');
+            el.classList.add('bg-white/5','border-white/10','text-gray-400');
+        } else {
+            activeClauses.add(clause);
+            el.classList.add('active','bg-indigo-600/30','border-indigo-500/40','text-indigo-300');
+            el.classList.remove('bg-white/5','border-white/10','text-gray-400');
+        }
+    }
+
+    function generateContract() {
+        const tmpl = contractTemplates[selectedType];
+        const yourName = document.getElementById('inp-your-name').value || 'Acme Studios';
+        const clientName = document.getElementById('inp-client-name').value || 'Jane Smith';
+        const value = document.getElementById('inp-value').value || '$5,000';
+        const timeline = document.getElementById('inp-timeline').value || '6 weeks';
+        const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        let lines = [
+            `<span class="text-indigo-400 font-bold">${tmpl.title}</span>`,
+            ``,
+            `<span class="text-gray-500">Date: ${today}</span>`,
+            ``,
+            `<span class="text-white font-semibold">1. PARTIES</span>`,
+            `This Agreement is entered into between <span class="text-indigo-300">${yourName}</span> ("Contractor")`,
+            `and <span class="text-indigo-300">${clientName}</span> ("Client").`,
+            ``,
+            `<span class="text-white font-semibold">2. SCOPE OF WORK</span>`,
+            `Contractor agrees to ${tmpl.scope} as described herein.`,
+            ``,
+            `<span class="text-gray-400">Deliverables:</span>`,
+        ];
+
+        tmpl.deliverables.forEach(d => lines.push(`  • ${d}`));
+
+        lines.push('', `<span class="text-white font-semibold">3. COMPENSATION</span>`);
+        lines.push(`Total project fee: <span class="text-green-400 font-semibold">${value}</span>`);
+
+        if (activeClauses.has('payment')) {
+            lines.push(`Payment schedule: 50% upfront (${value.replace(/[\d,]+/, m => Math.round(parseInt(m.replace(/,/g,''))/2).toLocaleString())}), 50% upon completion.`);
+            lines.push(`Late payments accrue interest at 1.5% per month.`);
+        }
+
+        lines.push('', `<span class="text-white font-semibold">4. TIMELINE</span>`);
+        lines.push(`Project duration: <span class="text-indigo-300">${timeline}</span> from the effective date.`);
+
+        if (activeClauses.has('revisions')) {
+            lines.push('', `<span class="text-white font-semibold">5. REVISIONS</span>`);
+            lines.push(`This agreement includes <span class="text-amber-400">2 rounds of revisions</span>.`);
+            lines.push(`Additional revisions billed at Contractor's standard hourly rate.`);
+        }
+
+        if (activeClauses.has('ip')) {
+            lines.push('', `<span class="text-white font-semibold">6. INTELLECTUAL PROPERTY</span>`);
+            lines.push(`Upon receipt of final payment, Contractor assigns all rights in the`);
+            lines.push(`<span class="text-indigo-300">final accepted deliverables</span> to Client.`);
+            lines.push(`Contractor retains rights to preliminary concepts, unused drafts,`);
+            lines.push(`and pre-existing tools/frameworks.`);
+        }
+
+        if (activeClauses.has('killfee')) {
+            lines.push('', `<span class="text-white font-semibold">7. TERMINATION & KILL FEE</span>`);
+            lines.push(`Either party may terminate with 7 days written notice.`);
+            lines.push(`If Client terminates, a kill fee of <span class="text-red-400">25% of remaining project value</span>`);
+            lines.push(`is due within 14 days. Work completed to date is billed in full.`);
+        }
+
+        if (activeClauses.has('nda')) {
+            lines.push('', `<span class="text-white font-semibold">8. CONFIDENTIALITY</span>`);
+            lines.push(`Both parties agree to keep confidential all non-public information`);
+            lines.push(`disclosed during the project. This obligation survives termination`);
+            lines.push(`for a period of 2 years.`);
+        }
+
+        if (activeClauses.has('noncompete')) {
+            lines.push('', `<span class="text-white font-semibold">9. NON-COMPETE</span>`);
+            lines.push(`Contractor agrees not to provide substantially similar services to`);
+            lines.push(`Client's direct competitors for 6 months after project completion,`);
+            lines.push(`limited to the specific market segment of this project.`);
+        }
+
+        lines.push('', `<span class="text-white font-semibold">SIGNATURES</span>`);
+        lines.push('');
+        lines.push(`_________________________          _________________________`);
+        lines.push(`${yourName}                        ${clientName}`);
+        lines.push(`Contractor                         Client`);
+        lines.push(`Date: _______________               Date: _______________`);
+
+        document.getElementById('gen-step-2').classList.add('hidden');
+        document.getElementById('gen-step-3').classList.remove('hidden');
+
+        const output = document.getElementById('contract-output');
+        output.innerHTML = '';
+
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i >= lines.length) { clearInterval(interval); return; }
+            const line = document.createElement('div');
+            line.innerHTML = lines[i] || '&nbsp;';
+            line.className = 'contract-line';
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+            i++;
+        }, 50);
+    }
+
+    function resetGenerator() {
+        document.getElementById('gen-step-2').classList.add('hidden');
+        document.getElementById('gen-step-3').classList.add('hidden');
+        document.querySelectorAll('.proj-btn').forEach(b => b.classList.remove('border-indigo-500','bg-indigo-600/10'));
+        selectedType = null;
+    }
+
+    function loadSampleContract(type) {
+        document.getElementById('review-text').value = sampleContracts[type];
+    }
+
+    function reviewContract() {
+        const text = document.getElementById('review-text').value.trim();
+        if (!text) return;
+
+        // Determine which sample it matches (or default to unfair)
+        let resultKey = 'unfair';
+        if (text.includes('ninety (90) days')) resultKey = 'late';
+        else if (text.includes('modifications, enhancements, additions')) resultKey = 'scope';
+
+        const result = reviewResults[resultKey];
+
+        document.getElementById('review-output').classList.remove('hidden');
+        document.getElementById('review-input').classList.add('hidden');
+
+        const badge = document.getElementById('risk-badge');
+        badge.textContent = result.score;
+        badge.className = `text-sm font-semibold px-3 py-1 rounded-full bg-${result.color}-500/20 text-${result.color}-400`;
+        document.getElementById('risk-summary').textContent = result.summary;
+
+        const itemsEl = document.getElementById('risk-items');
+        itemsEl.innerHTML = '';
+
+        result.items.forEach((item, idx) => {
+            setTimeout(() => {
+                const div = document.createElement('div');
+                div.className = `risk-${item.level} pl-4 py-3 fade-in`;
+                div.innerHTML = `
+                    <div class="font-semibold text-white mb-1">${item.title}</div>
+                    <p class="text-sm text-gray-400 mb-2">${item.desc}</p>
+                    <div class="bg-green-500/5 border border-green-500/20 rounded-lg p-3">
+                        <p class="text-xs text-green-400 uppercase tracking-wide mb-1">🗣️ Negotiation Script</p>
+                        <p class="text-sm text-green-300 italic">${item.script}</p>
+                    </div>
+                `;
+                itemsEl.appendChild(div);
+            }, idx * 300);
+        });
+    }
+
+    function resetReview() {
+        document.getElementById('review-output').classList.add('hidden');
+        document.getElementById('review-input').classList.remove('hidden');
+        document.getElementById('review-text').value = '';
+    }
+
+    function submitWaitlist() {
+        const email = document.getElementById('wl-email').value.trim();
+        if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+
+        const entry = {
+            email,
+            role: document.getElementById('wl-role').value,
+            contracts: document.getElementById('wl-contracts').value,
+            timestamp: new Date().toISOString(),
+            product: 'contractpilot'
+        };
+
+        const existing = JSON.parse(localStorage.getItem('contractpilot_waitlist') || '[]');
+        existing.push(entry);
+        localStorage.setItem('contractpilot_waitlist', JSON.stringify(existing));
+
+        document.getElementById('waitlist-form').classList.add('hidden');
+        document.getElementById('waitlist-success').classList.remove('hidden');
+        document.getElementById('waitlist-position').textContent = `You're #${existing.length + 247} on the waitlist`;
+    }
+    </script>
+</body>
+</html>
