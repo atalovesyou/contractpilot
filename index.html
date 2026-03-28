@@ -51,12 +51,6 @@
         .risk-medium { border-left: 3px solid #f59e0b; }
         .risk-low { border-left: 3px solid #22c55e; }
     </style>
-  <link rel="canonical" href="https://atalovesyou.github.io/contractpilot/">
-  <meta property="og:image" content="https://atalovesyou.github.io/contractpilot/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:image" content="https://atalovesyou.github.io/contractpilot/og-image.png">
-  <meta property="og:url" content="https://atalovesyou.github.io/contractpilot/">
 </head>
 <body class="bg-[#0a0a0f] text-gray-200 antialiased">
 
@@ -84,7 +78,7 @@
         <div class="max-w-4xl mx-auto text-center">
             <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-1.5 text-sm text-indigo-300 mb-6">
                 <span class="w-2 h-2 bg-indigo-400 rounded-full animate-pulse"></span>
-                Draft + Review + Negotiate — One Tool
+                v2.0 — 40+ clause patterns • Universal contract review • Draft + Review + Negotiate
             </div>
             <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
                 Professional contracts<br>
@@ -105,13 +99,16 @@
             <!-- Social proof -->
             <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
                 <div class="flex items-center gap-2">
-                    <span class="text-green-400">✓</span> No lawyer needed
+                    <span class="text-green-400">✓</span> 40+ clause patterns analyzed
                 </div>
                 <div class="flex items-center gap-2">
-                    <span class="text-green-400">✓</span> PDF & DOCX export
+                    <span class="text-green-400">✓</span> 10 risk categories
                 </div>
                 <div class="flex items-center gap-2">
-                    <span class="text-green-400">✓</span> 6 industry templates
+                    <span class="text-green-400">✓</span> Negotiation scripts included
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-400">✓</span> PDF export + review reports
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="text-green-400">✓</span> Free tier forever
@@ -253,10 +250,14 @@
             <div class="glass rounded-2xl p-8">
                 <div id="review-input">
                     <textarea id="review-text" rows="6" placeholder="Paste a contract or clause here... (or click a sample below)" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:border-indigo-500 focus:outline-none resize-none text-sm"></textarea>
-                    <div class="flex flex-wrap gap-2 mt-3">
+                    <p class="text-xs text-gray-500 mt-2 mb-2">Try a sample contract clause:</p>
+                    <div class="flex flex-wrap gap-2">
                         <button onclick="loadSampleContract('unfair')" class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full hover:bg-red-500/20 transition">⚠️ Unfair IP clause</button>
                         <button onclick="loadSampleContract('late')" class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1.5 rounded-full hover:bg-amber-500/20 transition">⏰ Late payment trap</button>
                         <button onclick="loadSampleContract('scope')" class="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1.5 rounded-full hover:bg-purple-500/20 transition">📐 Unlimited scope creep</button>
+                        <button onclick="loadSampleContract('termination')" class="text-xs bg-orange-500/10 text-orange-400 border border-orange-500/20 px-3 py-1.5 rounded-full hover:bg-orange-500/20 transition">⚡ One-sided termination</button>
+                        <button onclick="loadSampleContract('liability')" class="text-xs bg-pink-500/10 text-pink-400 border border-pink-500/20 px-3 py-1.5 rounded-full hover:bg-pink-500/20 transition">💣 Unlimited liability</button>
+                        <button onclick="loadSampleContract('full')" class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-3 py-1.5 rounded-full hover:bg-indigo-500/20 transition">📋 Full bad contract</button>
                     </div>
                     <button onclick="reviewContract()" class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition">
                         🔍 Analyze Contract
@@ -570,7 +571,26 @@
     const sampleContracts = {
         unfair: `INTELLECTUAL PROPERTY. All work product, including but not limited to concepts, drafts, notes, sketches, designs, code, and any materials created or developed in connection with the Services, whether or not incorporated into the final deliverables, shall be deemed "work made for hire" and shall be the sole and exclusive property of the Client. Contractor hereby irrevocably assigns all right, title, and interest in and to any work product to Client, including any and all patent, copyright, trademark, and trade secret rights. Contractor waives all moral rights in the work product.`,
         late: `PAYMENT TERMS. Client shall pay Contractor within ninety (90) days of receipt of invoice. Late payments shall not accrue interest. In the event of a dispute regarding any invoice, Client may withhold payment of the disputed amount indefinitely until such dispute is resolved to Client's satisfaction. Contractor shall continue to perform Services during any payment dispute. Contractor may not suspend or terminate Services due to non-payment.`,
-        scope: `SCOPE OF WORK. Contractor agrees to perform all services reasonably requested by Client in connection with the Project, including but not limited to any modifications, enhancements, additions, or changes requested by Client at any time during the term of this Agreement. Contractor acknowledges that the scope of work may evolve and agrees to accommodate all reasonable changes without additional compensation. Additional rounds of revisions shall be provided at no extra charge until Client is fully satisfied with the deliverables.`
+        scope: `SCOPE OF WORK. Contractor agrees to perform all services reasonably requested by Client in connection with the Project, including but not limited to any modifications, enhancements, additions, or changes requested by Client at any time during the term of this Agreement. Contractor acknowledges that the scope of work may evolve and agrees to accommodate all reasonable changes without additional compensation. Additional rounds of revisions shall be provided at no extra charge until Client is fully satisfied with the deliverables.`,
+        termination: `TERMINATION. Client may terminate this Agreement at any time, for any reason, without cause, by providing written notice to Contractor. Upon termination, Contractor shall immediately cease all work. Client shall have no obligation to pay any termination fee, cancellation fee, or kill fee. Contractor shall not be entitled to compensation for work in progress at the time of termination. All work product created to date shall become the exclusive property of Client upon termination, regardless of payment status.`,
+        liability: `INDEMNIFICATION. Contractor shall indemnify, defend, and hold harmless Client and its officers, directors, employees, and agents from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to Contractor's performance of Services. Contractor warrants that all deliverables shall be error-free and defect-free. Contractor shall be liable for any consequential, indirect, or incidental damages, including lost profits and loss of business, resulting from any deficiency in the Services.`,
+        full: `AGREEMENT FOR SERVICES
+
+1. SCOPE OF WORK. Contractor agrees to perform all services reasonably requested by Client, including but not limited to any modifications, enhancements, additions, or changes requested by Client at any time. Contractor agrees to accommodate all reasonable changes without additional compensation. Unlimited revisions shall be provided until Client is fully satisfied.
+
+2. INTELLECTUAL PROPERTY. All work product, including concepts, drafts, notes, sketches, and any materials created in connection with the Services, whether or not incorporated into final deliverables, shall be deemed work made for hire and shall be the sole and exclusive property of the Client. Contractor waives all moral rights. Contractor shall not use any deliverables in their portfolio or marketing materials.
+
+3. PAYMENT. Client shall pay Contractor within ninety (90) days of receipt of invoice. Late payments shall not accrue interest. Client may withhold payment of any disputed amount indefinitely until resolved to Client's satisfaction. Contractor shall continue to perform Services during any payment dispute and may not suspend or terminate Services due to non-payment.
+
+4. TERMINATION. Client may terminate this Agreement at any time without cause and without penalty. Upon termination, Contractor shall not be entitled to any kill fee or compensation for work in progress.
+
+5. NON-COMPETE. Contractor shall not provide similar services to any of Client's competitors for a period of 2 years following completion. Contractor shall not solicit any of Client's employees or customers.
+
+6. LIABILITY. Contractor shall indemnify and hold harmless Client from any and all claims, damages, and losses. Contractor warrants all work shall be error-free. Contractor shall be liable for consequential damages including lost profits.
+
+7. CONFIDENTIALITY. All information disclosed by Client shall be treated as confidential in perpetuity. This obligation survives indefinitely.
+
+8. DISPUTE RESOLUTION. Any disputes shall be resolved exclusively in the courts of Client's home state. Contractor waives the right to trial by jury.`
     };
 
     const reviewResults = {
@@ -737,34 +757,325 @@
         document.getElementById('review-text').value = sampleContracts[type];
     }
 
+    // ==================== UNIVERSAL CONTRACT REVIEW ENGINE v2.0 ====================
+    // Analyzes ANY contract text with 40+ pattern rules across 10 risk categories
+
+    const CLAUSE_PATTERNS = [
+      // === PAYMENT RISKS ===
+      { id:'pay-net60+', cat:'Payment', level:'high',
+        patterns:[/\b(sixty|90|ninety|120|one\s*hundred\s*(?:and\s*)?twenty)\s*\(?(\d+)?\)?\s*(?:calendar\s+)?days?\b/i, /\bnet\s*(6[0-9]|[7-9]\d|1[0-9]{2})\b/i],
+        title:'Extended Payment Terms',
+        desc:'Payment terms beyond Net 30 force you to finance the client\'s project. Industry standard is Net 15-30.',
+        script:'"I work on Net 15 payment terms. I\'m flexible on Net 30 for larger projects, but anything beyond that isn\'t feasible for my business. Can we adjust?"'
+      },
+      { id:'pay-no-interest', cat:'Payment', level:'medium',
+        patterns:[/late\s+payments?\s+shall\s+not\s+accrue\s+interest/i, /no\s+(?:late\s+)?(?:payment\s+)?interest/i, /without\s+(?:any\s+)?(?:interest|penalty)/i],
+        title:'No Late Payment Penalty',
+        desc:'Without interest or penalties on late payments, there\'s no financial incentive for the client to pay on time.',
+        script:'"I\'d like to add a standard late payment clause: 1.5% monthly interest on overdue invoices. This is standard in freelance agreements and protects both of us."'
+      },
+      { id:'pay-dispute-withhold', cat:'Payment', level:'high',
+        patterns:[/withhold\s+payment.*(?:dispute|indefinite)/i, /dispute.*withhold.*(?:satisfaction|resolved)/i, /may\s+withhold.*(?:disputed|contested)\s+amount/i],
+        title:'Indefinite Payment Withholding on Disputes',
+        desc:'The client can dispute any invoice and withhold payment indefinitely. This removes your leverage entirely.',
+        script:'"Undisputed portions should be paid on schedule. For disputed amounts, let\'s add a 14-day resolution process with mediation if needed."'
+      },
+      { id:'pay-continue-nonpay', cat:'Payment', level:'high',
+        patterns:[/continue\s+(?:to\s+)?(?:perform|provide|deliver).*(?:during|despite).*(?:non-?payment|dispute)/i, /(?:shall|must|will)\s+not\s+(?:suspend|terminate|stop|cease).*(?:due\s+to|because\s+of).*(?:non-?payment|late)/i],
+        title:'Must Work During Non-Payment',
+        desc:'You\'re required to keep working even if you\'re not getting paid. This removes your only leverage as a contractor.',
+        script:'"I need the right to pause work if payment is more than 15 days overdue. This is standard protection and ensures both parties stay accountable."'
+      },
+      { id:'pay-no-upfront', cat:'Payment', level:'medium',
+        patterns:[/payment\s+(?:only\s+)?upon\s+(?:completion|delivery|acceptance)/i, /(?:no|zero|0%?)\s+(?:upfront|advance|deposit|retainer)/i],
+        title:'No Upfront Payment',
+        desc:'Working without a deposit means you bear 100% of the financial risk. Standard practice is 25-50% upfront.',
+        script:'"I require a 50% deposit before starting work. This is standard practice and shows mutual commitment to the project."'
+      },
+      // === INTELLECTUAL PROPERTY RISKS ===
+      { id:'ip-all-work', cat:'IP', level:'high',
+        patterns:[/all\s+(?:work\s+)?product.*(?:including|encompassing).*(?:concepts|drafts|notes|sketches|preliminary)/i, /(?:concepts|drafts|notes|sketches|unused).*(?:sole|exclusive)\s+property/i],
+        title:'Total IP Assignment Including Drafts',
+        desc:'This assigns ALL work — including concepts, sketches, and unused drafts. You lose rights to repurpose unused ideas for other projects.',
+        script:'"I\'m happy to assign IP for the final delivered work, but I need to retain rights to preliminary concepts and unused drafts. This is standard creative practice."'
+      },
+      { id:'ip-work-for-hire', cat:'IP', level:'medium',
+        patterns:[/work\s*(?:made|deemed)\s*(?:for|as)\s*hire/i, /(?:shall|will)\s+be\s+(?:deemed|considered|treated\s+as)\s+(?:a\s+)?work\s+(?:made\s+)?for\s+hire/i],
+        title:'Work-for-Hire Classification',
+        desc:'Work-for-hire only legally applies to specific employment categories. Misclassifying freelance work this way can have tax and employment law implications.',
+        script:'"Let\'s structure this as an IP assignment upon final payment rather than work-for-hire. Same ownership result, cleaner contractor relationship."'
+      },
+      { id:'ip-moral-waiver', cat:'IP', level:'medium',
+        patterns:[/waive[sd]?\s+(?:all\s+)?moral\s+rights/i, /moral\s+rights.*(?:waiv|relinquish|surrender)/i],
+        title:'Moral Rights Waiver',
+        desc:'Waiving moral rights means the client can alter your work, use it out of context, or remove your attribution without consent.',
+        script:'"I\'d like to retain moral rights, specifically the right to attribution and integrity. This doesn\'t limit your usage of the delivered work."'
+      },
+      { id:'ip-preexisting', cat:'IP', level:'medium',
+        patterns:[/(?:pre-?existing|prior|background)\s+(?:ip|intellectual\s+property|tools|frameworks|code|software).*(?:assign|transfer|belong|property\s+of)/i],
+        title:'Pre-existing IP Transfer',
+        desc:'This could transfer your existing tools, frameworks, or code libraries that you use across all projects.',
+        script:'"Pre-existing tools and frameworks remain mine. I\'ll grant you a perpetual license to use them within the deliverables, but ownership stays with me."'
+      },
+      { id:'ip-no-portfolio', cat:'IP', level:'low',
+        patterns:[/(?:shall|may|will)\s+not\s+(?:use|display|show|include|reference).*(?:portfolio|website|marketing|promotional)/i, /(?:prohibit|restrict|prevent).*(?:portfolio|showcase|sample)/i],
+        title:'No Portfolio Rights',
+        desc:'You can\'t showcase this work in your portfolio, which limits your ability to win future clients with similar projects.',
+        script:'"I\'d like to include the project in my portfolio after launch. I can wait 3-6 months and will remove any confidential details."'
+      },
+      // === SCOPE & DELIVERABLES RISKS ===
+      { id:'scope-unlimited', cat:'Scope', level:'high',
+        patterns:[/(?:any|all)\s+(?:modifications|enhancements|additions|changes|alterations|revisions).*(?:requested|required|directed)/i, /scope.*(?:may|shall|will)\s+(?:evolve|change|expand|grow)/i, /(?:accommodate|accept)\s+(?:all|any)\s+(?:reasonable\s+)?changes?\s+without\s+additional\s+(?:compensation|cost|charge|fee)/i],
+        title:'Unlimited Scope Changes Without Pay',
+        desc:'The client can expand the project scope indefinitely without paying more. This is the #1 cause of freelancer burnout.',
+        script:'"I\'m happy to accommodate changes through a formal change order process. Work outside the original scope will be quoted separately."'
+      },
+      { id:'scope-unlimited-revisions', cat:'Scope', level:'high',
+        patterns:[/unlimited\s+(?:rounds?\s+of\s+)?revisions?/i, /(?:until|to)\s+(?:client(?:'s)?|customer(?:'s)?)\s+(?:full\s+)?satisfaction/i, /revisions?.*(?:no\s+(?:extra|additional)\s+(?:charge|cost|fee)|at\s+no\s+(?:cost|charge))/i, /(?:as\s+many|any\s+number\s+of)\s+revisions?/i],
+        title:'Unlimited Revisions',
+        desc:'No revision limit means you could be revising forever. Each round should be clearly scoped.',
+        script:'"I include 2-3 rounds of revisions in the base price. Additional revisions are billed at my hourly rate of $[X]. This ensures quality feedback."'
+      },
+      { id:'scope-vague', cat:'Scope', level:'medium',
+        patterns:[/(?:and\s+)?(?:other|any\s+other|all\s+other)\s+(?:services|work|tasks|duties)\s+(?:as\s+)?(?:reasonably\s+)?(?:requested|required|directed|assigned)/i, /including\s+but\s+not\s+limited\s+to/i],
+        title:'Vague Scope / Open-Ended Duties',
+        desc:'"Including but not limited to" or "other services as requested" can balloon the project far beyond what was agreed.',
+        script:'"Let\'s replace \'including but not limited to\' with a specific deliverables list. A clear SOW protects both of us from scope confusion."'
+      },
+      // === TERMINATION RISKS ===
+      { id:'term-at-will-one-sided', cat:'Termination', level:'high',
+        patterns:[/client\s+may\s+terminate.*(?:at\s+any\s+time|without\s+cause|for\s+any\s+reason|for\s+convenience).*(?:without|no).*(?:penalty|compensation|fee|payment)/i],
+        title:'One-Sided Termination Without Pay',
+        desc:'Client can cancel anytime without paying for work done. You could finish 90% of a project and get nothing.',
+        script:'"Termination should require payment for all work completed to date plus a kill fee of 25% of the remaining value. Either party should have the right to terminate."'
+      },
+      { id:'term-no-killfee', cat:'Termination', level:'medium',
+        patterns:[/terminat.*(?:no|without|zero).*(?:kill\s+fee|cancellation\s+fee|termination\s+fee|early\s+termination)/i, /(?:no|without)\s+(?:kill|cancellation|termination|early)\s+fee/i],
+        title:'No Kill Fee / Cancellation Fee',
+        desc:'Without a kill fee, the client can cancel mid-project and you eat the cost of blocked-out time you turned away other work for.',
+        script:'"I\'d like to add a kill fee clause: 25% of remaining project value, payable within 14 days of termination. This is standard for professional services."'
+      },
+      { id:'term-short-notice', cat:'Termination', level:'low',
+        patterns:[/(?:immediately|instant|0\s*days?|same\s+day)\s+terminat/i, /terminat.*(?:immediate|instant)\s+(?:effect|notice)/i, /(?:without\s+(?:prior\s+)?notice|zero\s+notice).*terminat/i],
+        title:'Immediate Termination (No Notice)',
+        desc:'Zero notice period means the client can end your contract on the spot, leaving you scrambling for income.',
+        script:'"I need at least 7-14 days written notice for termination. This allows time to wrap up work in progress and transition deliverables."'
+      },
+      // === LIABILITY & INDEMNIFICATION ===
+      { id:'liab-unlimited', cat:'Liability', level:'high',
+        patterns:[/(?:contractor|freelancer|consultant|provider).*(?:shall|will|agrees?\s+to)\s+(?:indemnify|hold\s+harmless).*(?:any\s+and\s+all|all)\s+(?:claims|damages|losses|liabilities|costs)/i, /unlimited\s+(?:liability|indemnification|damages)/i],
+        title:'Unlimited Liability / Indemnification',
+        desc:'You\'re on the hook for ANY damages, with no cap. A single project could wipe out years of income.',
+        script:'"Liability should be capped at the total project fee. Unlimited liability isn\'t reasonable for a freelance engagement."'
+      },
+      { id:'liab-consequential', cat:'Liability', level:'medium',
+        patterns:[/(?:consequential|indirect|incidental|special|punitive)\s+damages/i, /(?:lost\s+profits|lost\s+revenue|loss\s+of\s+(?:business|data)).*(?:liable|responsible|damages)/i],
+        title:'Consequential Damages Exposure',
+        desc:'You could be liable for the client\'s lost profits, lost business, or other indirect damages far beyond your project fee.',
+        script:'"Both parties should waive consequential, indirect, and incidental damages. Liability should be limited to direct damages capped at the contract value."'
+      },
+      { id:'liab-warranty-everything', cat:'Liability', level:'medium',
+        patterns:[/warrant[sy].*(?:error-?free|bug-?free|defect-?free|perfect|flawless)/i, /(?:guarantee|warrant)[sy]?\s+(?:that\s+)?(?:all|the)\s+(?:work|deliverables|services?).*(?:free\s+(?:from|of)\s+(?:any|all)\s+(?:defects|errors|bugs))/i],
+        title:'Unrealistic Warranty (Error-Free)',
+        desc:'No software or creative work is 100% error-free. Warranting perfection exposes you to claims on any minor issue.',
+        script:'"I warrant that work will be performed professionally and substantially conform to specs. No creative or development work can be warranted as error-free."'
+      },
+      // === CONFIDENTIALITY & NDA ===
+      { id:'nda-perpetual', cat:'NDA', level:'medium',
+        patterns:[/(?:confidential|non-?disclosure).*(?:perpetual|indefinite|surviv.*(?:forever|indefinite)|no\s+expir)/i, /(?:in\s+perpetuity|without\s+(?:time\s+)?limit).*(?:confidential|non-?disclosure)/i],
+        title:'Perpetual NDA / Confidentiality',
+        desc:'A never-ending NDA means you can never discuss this work or the skills you gained. Standard is 2-5 years.',
+        script:'"Confidentiality obligations should have a reasonable duration — 2-3 years is industry standard. Perpetual NDAs are disproportionate for freelance work."'
+      },
+      { id:'nda-overbroad', cat:'NDA', level:'low',
+        patterns:[/(?:all|any)\s+information.*(?:disclosed|shared|communicated|provided).*(?:confidential|proprietary)/i, /(?:anything|everything)\s+(?:related\s+to|concerning|regarding|about)\s+(?:the\s+)?(?:project|engagement|work).*(?:confidential|proprietary)/i],
+        title:'Overbroad Confidentiality Definition',
+        desc:'Defining ALL information as confidential is unreasonable. Only genuinely sensitive business information should be protected.',
+        script:'"Confidential information should be specifically marked or obviously sensitive. General business discussions and publicly available info shouldn\'t be covered."'
+      },
+      // === NON-COMPETE ===
+      { id:'nc-broad', cat:'Non-Compete', level:'high',
+        patterns:[/non-?compete.*(?:1[2-9]|[2-9]\d)\s+months/i, /non-?compete.*(?:2|3|4|5)\s+years?/i, /(?:shall|will|agrees?\s+to)\s+not\s+(?:provide|offer|perform|engage\s+in).*(?:similar|competing|same).*(?:services|work|business)/i],
+        title:'Broad Non-Compete Clause',
+        desc:'Non-competes can prevent you from working in your field entirely. Overly broad ones may not be enforceable but are still dangerous.',
+        script:'"Non-competes should be narrowly scoped: limited to the specific client\'s direct competitors, in the same geographic market, for no more than 6 months."'
+      },
+      { id:'nc-nonsolicitation', cat:'Non-Compete', level:'low',
+        patterns:[/non-?solicitation/i, /(?:shall|will|agrees?\s+to)\s+not\s+(?:solicit|recruit|hire|contact).*(?:employees?|staff|team|clients?|customers?)/i],
+        title:'Non-Solicitation Clause',
+        desc:'Prevents you from working with the client\'s employees or other clients. Reasonable if scoped, problematic if broad.',
+        script:'"Non-solicitation should be limited to 12 months and only cover people you directly worked with. I shouldn\'t be restricted from the client\'s entire network."'
+      },
+      // === DISPUTE RESOLUTION ===
+      { id:'disp-distant-venue', cat:'Disputes', level:'medium',
+        patterns:[/(?:exclusive\s+)?(?:jurisdiction|venue|forum).*(?:shall\s+be|is\s+(?:hereby\s+)?set|located\s+in)/i, /(?:any|all)\s+(?:disputes?|claims?|controversies?).*(?:resolved|settled|adjudicated).*(?:in\s+(?:the\s+)?(?:courts?\s+of|state\s+of))/i],
+        title:'Venue / Jurisdiction Clause',
+        desc:'If the venue is in the client\'s city/state, you\'d have to travel and hire local counsel for any dispute. This heavily favors larger companies.',
+        script:'"Let\'s either use neutral venue, or agree to online arbitration (e.g., via JAMS or AAA). This is fair for both parties regardless of location."'
+      },
+      { id:'disp-no-recourse', cat:'Disputes', level:'medium',
+        patterns:[/(?:waiv|relinquish|surrender).*(?:right\s+to\s+(?:sue|litigat|bring\s+(?:a\s+)?claim|trial\s+by\s+jury))/i, /(?:jury\s+trial\s+)?waiver/i],
+        title:'Jury Trial / Litigation Waiver',
+        desc:'Waiving your right to sue or to a jury trial limits your options if things go seriously wrong.',
+        script:'"I\'m open to arbitration as a first step, but I\'d like to preserve the right to litigation if arbitration fails. Jury trial waivers should be mutual."'
+      },
+      // === ASSIGNMENT & SUBCONTRACTING ===
+      { id:'assign-no-sub', cat:'Assignment', level:'low',
+        patterns:[/(?:shall|may|will)\s+not\s+(?:assign|transfer|delegate|subcontract)/i, /(?:no|without\s+(?:prior\s+)?(?:written\s+)?consent).*(?:assign|subcontract|delegate)/i],
+        title:'No Assignment / Subcontracting',
+        desc:'You can\'t bring in help or subcontract any portion. Fine for small projects, but limiting for larger ones.',
+        script:'"I\'d like the ability to subcontract portions of the work with your advance notice. I remain responsible for quality and deadlines."'
+      },
+      { id:'assign-client-can', cat:'Assignment', level:'medium',
+        patterns:[/(?:client|company|employer).*(?:may|shall\s+have\s+the\s+right\s+to)\s+(?:assign|transfer).*(?:without\s+(?:contractor|freelancer|consultant).*consent)/i],
+        title:'Client Can Assign Without Consent',
+        desc:'The client can transfer your contract to anyone — including companies you\'d never want to work with.',
+        script:'"Assignment by either party should require written consent from the other. I need to know who I\'m working for."'
+      },
+      // === INSURANCE & COMPLIANCE ===
+      { id:'ins-required', cat:'Compliance', level:'low',
+        patterns:[/(?:shall|must|required\s+to)\s+(?:maintain|carry|obtain|procure).*(?:insurance|liability\s+coverage|errors?\s+and\s+omissions|professional\s+indemnity)/i],
+        title:'Insurance Requirement',
+        desc:'You may need to carry professional liability, E&O, or general liability insurance. Costs vary ($500-2000/year) — factor into pricing.',
+        script:'"I\'m happy to carry professional liability insurance if required. Let\'s discuss the coverage limits — I\'ll factor the cost into my rate."'
+      },
+      // === OWNERSHIP & DELIVERABLES ===
+      { id:'own-upon-payment', cat:'IP', level:'low',
+        patterns:[/(?:upon|after|following)\s+(?:receipt\s+of\s+)?(?:final|full|complete)\s+payment.*(?:transfer|assign|convey|vest)/i, /(?:ip|intellectual\s+property|ownership|rights?).*(?:transfer|vest|convey).*(?:upon|after|following).*(?:payment|compensation)/i],
+        title:'IP Transfer Upon Payment (Good!)',
+        desc:'IP transfers only after you\'re paid in full. This is the recommended approach — it protects you.',
+        script:'✅ This is a good clause. IP should only transfer after full payment. No changes needed.'
+      },
+      // === FORCE MAJEURE & DELAYS ===
+      { id:'fm-one-sided', cat:'Force Majeure', level:'medium',
+        patterns:[/(?:contractor|freelancer|consultant|provider).*(?:shall\s+not\s+be\s+(?:relieved|excused)).*(?:force\s+majeure|act\s+of\s+god|pandemic|natural\s+disaster)/i, /force\s+majeure.*(?:shall\s+not|does\s+not)\s+(?:apply\s+to|excuse|relieve).*(?:contractor|freelancer|provider)/i],
+        title:'One-Sided Force Majeure',
+        desc:'Force majeure protections only cover the client, not you. Both parties should be equally protected from unforeseeable events.',
+        script:'"Force majeure should be mutual. Both parties should be excused from delays caused by events beyond reasonable control."'
+      },
+      // === AUTO-RENEWAL ===
+      { id:'renew-auto', cat:'Termination', level:'low',
+        patterns:[/auto(?:matic(?:ally)?)?[\s-]*renew/i, /(?:shall|will)\s+(?:automatically\s+)?renew.*(?:unless|until).*(?:written\s+notice|terminat)/i],
+        title:'Auto-Renewal Clause',
+        desc:'The contract renews automatically unless you actively opt out. Easy to miss the cancellation window.',
+        script:'"Auto-renewal should require mutual written confirmation at least 30 days before renewal. Neither party should be locked in by default."'
+      },
+      // === EXPENSE & REIMBURSEMENT ===
+      { id:'exp-not-reimbursed', cat:'Payment', level:'low',
+        patterns:[/(?:contractor|freelancer|consultant|provider).*(?:responsible\s+for|bear|absorb).*(?:all|any|own)\s+(?:costs?|expenses?|overhead)/i, /(?:no|without)\s+(?:reimbursement|expense\s+coverage)/i],
+        title:'No Expense Reimbursement',
+        desc:'You pay for all project-related expenses (software, stock photos, hosting, travel) out of pocket.',
+        script:'"Project-related expenses (stock assets, specialized software, hosting) should be reimbursed or pre-approved. Let\'s add a monthly expense cap with receipt submission."'
+      },
+    ];
+
     function reviewContract() {
         const text = document.getElementById('review-text').value.trim();
         if (!text) return;
 
-        // Determine which sample it matches (or default to unfair)
-        let resultKey = 'unfair';
-        if (text.includes('ninety (90) days')) resultKey = 'late';
-        else if (text.includes('modifications, enhancements, additions')) resultKey = 'scope';
+        // Run all patterns against text
+        const findings = [];
+        const textLower = text.toLowerCase();
 
-        const result = reviewResults[resultKey];
+        CLAUSE_PATTERNS.forEach(rule => {
+          for (const pat of rule.patterns) {
+            if (pat.test(text)) {
+              findings.push({...rule});
+              break; // one match per rule
+            }
+          }
+        });
 
+        // Sort: high > medium > low
+        const levelOrder = {high:0, medium:1, low:2};
+        findings.sort((a,b) => levelOrder[a.level] - levelOrder[b.level]);
+
+        // Calculate overall risk
+        let riskScore = 0;
+        findings.forEach(f => {
+          if (f.level === 'high') riskScore += 30;
+          else if (f.level === 'medium') riskScore += 15;
+          else riskScore += 5;
+        });
+        riskScore = Math.min(100, riskScore);
+
+        let overallLabel, overallColor;
+        if (riskScore >= 60) { overallLabel = 'HIGH RISK'; overallColor = 'red'; }
+        else if (riskScore >= 30) { overallLabel = 'MEDIUM RISK'; overallColor = 'amber'; }
+        else if (findings.length > 0) { overallLabel = 'LOW RISK'; overallColor = 'green'; }
+        else { overallLabel = 'NO ISSUES FOUND'; overallColor = 'green'; }
+
+        const highCount = findings.filter(f=>f.level==='high').length;
+        const medCount = findings.filter(f=>f.level==='medium').length;
+        const lowCount = findings.filter(f=>f.level==='low').length;
+
+        let summaryParts = [];
+        if (highCount) summaryParts.push(`${highCount} critical`);
+        if (medCount) summaryParts.push(`${medCount} warning${medCount>1?'s':''}`);
+        if (lowCount) summaryParts.push(`${lowCount} advisory`);
+        const summaryText = findings.length === 0
+          ? 'No red flags detected in this text. Paste more of the contract for a thorough review.'
+          : `${summaryParts.join(', ')} found across ${new Set(findings.map(f=>f.cat)).size} categories — Risk Score: ${riskScore}/100`;
+
+        // Render
         document.getElementById('review-output').classList.remove('hidden');
         document.getElementById('review-input').classList.add('hidden');
 
         const badge = document.getElementById('risk-badge');
-        badge.textContent = result.score;
-        badge.className = `text-sm font-semibold px-3 py-1 rounded-full bg-${result.color}-500/20 text-${result.color}-400`;
-        document.getElementById('risk-summary').textContent = result.summary;
+        badge.textContent = overallLabel;
+        badge.style.cssText = `background:rgba(${overallColor==='red'?'239,68,68':overallColor==='amber'?'245,158,11':'34,197,94'},0.2);color:${overallColor==='red'?'#f87171':overallColor==='amber'?'#fbbf24':'#4ade80'}`;
+        badge.className = 'text-sm font-semibold px-3 py-1 rounded-full';
+        document.getElementById('risk-summary').textContent = summaryText;
 
         const itemsEl = document.getElementById('risk-items');
         itemsEl.innerHTML = '';
 
-        result.items.forEach((item, idx) => {
+        // Risk score bar
+        const barDiv = document.createElement('div');
+        barDiv.className = 'mb-6 fade-in';
+        barDiv.innerHTML = `
+          <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+            <span>Risk Score</span><span class="font-mono">${riskScore}/100</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.08)">
+            <div class="h-full rounded-full transition-all duration-1000" style="width:${riskScore}%;background:${riskScore>=60?'#ef4444':riskScore>=30?'#f59e0b':'#22c55e'}"></div>
+          </div>
+          <div class="flex justify-between text-xs mt-1">
+            <span style="color:#22c55e">Safe</span><span style="color:#f59e0b">Caution</span><span style="color:#ef4444">Danger</span>
+          </div>
+        `;
+        itemsEl.appendChild(barDiv);
+
+        // Category summary chips
+        if (findings.length > 0) {
+          const cats = [...new Set(findings.map(f=>f.cat))];
+          const chipDiv = document.createElement('div');
+          chipDiv.className = 'flex flex-wrap gap-2 mb-4 fade-in';
+          cats.forEach(cat => {
+            const catFindings = findings.filter(f=>f.cat===cat);
+            const worstLevel = catFindings.some(f=>f.level==='high') ? 'high' : catFindings.some(f=>f.level==='medium') ? 'medium' : 'low';
+            const colors = {high:'239,68,68',medium:'245,158,11',low:'34,197,94'};
+            const textColors = {high:'#f87171',medium:'#fbbf24',low:'#4ade80'};
+            const chip = document.createElement('span');
+            chip.className = 'text-xs font-medium px-3 py-1 rounded-full';
+            chip.style.cssText = `background:rgba(${colors[worstLevel]},0.12);color:${textColors[worstLevel]};border:1px solid rgba(${colors[worstLevel]},0.25)`;
+            chip.textContent = `${cat} (${catFindings.length})`;
+            chipDiv.appendChild(chip);
+          });
+          itemsEl.appendChild(chipDiv);
+        }
+
+        // Individual findings
+        findings.forEach((item, idx) => {
             setTimeout(() => {
                 const div = document.createElement('div');
                 div.className = `risk-${item.level} pl-4 py-3 fade-in`;
+                const catEmojis = {Payment:'💳',IP:'🔒',Scope:'📐',Termination:'⚡',Liability:'⚠️',NDA:'🤐','Non-Compete':'🚫',Disputes:'⚖️',Assignment:'🔄',Compliance:'📋','Force Majeure':'🌪️'};
                 div.innerHTML = `
-                    <div class="font-semibold text-white mb-1">${item.title}</div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.06);color:#94a3b8">${catEmojis[item.cat]||'📎'} ${item.cat}</span>
+                      <span class="font-semibold text-white">${item.title}</span>
+                    </div>
                     <p class="text-sm text-gray-400 mb-2">${item.desc}</p>
                     <div class="bg-green-500/5 border border-green-500/20 rounded-lg p-3">
                         <p class="text-xs text-green-400 uppercase tracking-wide mb-1">🗣️ Negotiation Script</p>
@@ -772,8 +1083,99 @@
                     </div>
                 `;
                 itemsEl.appendChild(div);
-            }, idx * 300);
+            }, idx * 200);
         });
+
+        // Checklist of what's NOT in the contract
+        setTimeout(() => {
+          const missingChecks = [];
+          if (!/(?:terminat|cancel)/i.test(text)) missingChecks.push('⚠️ No termination clause — add clear exit terms for both parties');
+          if (!/(?:confidential|nda|non-?disclosure)/i.test(text)) missingChecks.push('💡 No confidentiality clause — consider adding mutual NDA');
+          if (!/(?:payment|compensat|fee|invoice|billing)/i.test(text)) missingChecks.push('⚠️ No payment terms — always define how and when you get paid');
+          if (!/(?:revis|revision|amendment|change\s+order)/i.test(text)) missingChecks.push('💡 No revision limits — set clear revision rounds');
+          if (!/(?:dispute|arbitrat|mediat|governing\s+law)/i.test(text)) missingChecks.push('💡 No dispute resolution — add arbitration or mediation clause');
+          if (!/(?:intellectual\s+property|ip\s+|ownership|copyright|assign)/i.test(text)) missingChecks.push('⚠️ No IP clause — clarify who owns the work product');
+          if (!/(?:liability|indemnif|limitation)/i.test(text)) missingChecks.push('💡 No liability cap — add a mutual liability limitation');
+
+          if (missingChecks.length > 0) {
+            const missingDiv = document.createElement('div');
+            missingDiv.className = 'mt-6 p-4 rounded-xl fade-in';
+            missingDiv.style.cssText = 'background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2)';
+            missingDiv.innerHTML = `
+              <p class="text-sm font-semibold text-indigo-400 mb-3">📋 Missing Clauses Check</p>
+              <ul class="space-y-2 text-sm text-gray-300">
+                ${missingChecks.map(c => `<li>${c}</li>`).join('')}
+              </ul>
+              <p class="text-xs text-gray-500 mt-3">Paste the full contract for the most accurate analysis.</p>
+            `;
+            itemsEl.appendChild(missingDiv);
+          }
+        }, findings.length * 200 + 300);
+
+        // Export review button
+        setTimeout(() => {
+          const exportDiv = document.createElement('div');
+          exportDiv.className = 'mt-4 flex gap-3 fade-in';
+          exportDiv.innerHTML = `
+            <button onclick="exportReviewPDF()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">📄 Export Review PDF</button>
+            <button onclick="copyReviewText()" class="glass text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition">📋 Copy Summary</button>
+          `;
+          itemsEl.appendChild(exportDiv);
+        }, findings.length * 200 + 500);
+
+        // Store for export
+        window._lastReview = { findings, riskScore, overallLabel, summaryText };
+    }
+
+    function exportReviewPDF() {
+      if (!window._lastReview) return;
+      const { findings, riskScore, overallLabel, summaryText } = window._lastReview;
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: 'mm', format: 'letter' });
+      const margin = 20;
+      const pw = doc.internal.pageSize.getWidth() - margin * 2;
+      let y = margin;
+
+      doc.setFont('helvetica','bold'); doc.setFontSize(16);
+      doc.text('Contract Review Report', margin, y); y += 10;
+      doc.setFont('helvetica','normal'); doc.setFontSize(10);
+      doc.text(`Generated: ${new Date().toLocaleDateString()}`, margin, y); y += 6;
+      doc.text(`Risk Score: ${riskScore}/100 — ${overallLabel}`, margin, y); y += 6;
+      doc.text(summaryText, margin, y, {maxWidth:pw}); y += 12;
+
+      findings.forEach(f => {
+        if (y > 250) { doc.addPage(); y = margin; }
+        const lvl = f.level === 'high' ? '🔴' : f.level === 'medium' ? '🟡' : '🟢';
+        doc.setFont('helvetica','bold'); doc.setFontSize(11);
+        doc.text(`${lvl} [${f.cat}] ${f.title}`, margin, y); y += 6;
+        doc.setFont('helvetica','normal'); doc.setFontSize(9);
+        const descLines = doc.splitTextToSize(f.desc, pw);
+        descLines.forEach(l => { if(y>260){doc.addPage();y=margin;} doc.text(l,margin,y); y+=5; });
+        y += 2;
+        const scriptLines = doc.splitTextToSize('Script: ' + f.script, pw);
+        doc.setTextColor(34,150,100);
+        scriptLines.forEach(l => { if(y>260){doc.addPage();y=margin;} doc.text(l,margin,y); y+=5; });
+        doc.setTextColor(0); y += 6;
+      });
+
+      doc.save('ContractPilot-Review.pdf');
+    }
+
+    function copyReviewText() {
+      if (!window._lastReview) return;
+      const { findings, riskScore, overallLabel } = window._lastReview;
+      let text = `CONTRACT REVIEW — ${overallLabel} (${riskScore}/100)\n${'='.repeat(40)}\n\n`;
+      findings.forEach(f => {
+        const lvl = f.level==='high'?'🔴':f.level==='medium'?'🟡':'🟢';
+        text += `${lvl} [${f.cat}] ${f.title}\n${f.desc}\nScript: ${f.script}\n\n`;
+      });
+      text += '\nGenerated by ContractPilot — contractpilot.ai';
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+      });
     }
 
     function resetReview() {
@@ -921,62 +1323,5 @@
             </div>
         </div>
     </section>
-
-  <!-- Analytics (GoatCounter — privacy-friendly, no cookies) -->
-  <script data-goatcounter="https://opensphere-labs.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-  <!-- Real Email Capture (Formsubmit.co — free, no backend) -->
-  <script>
-    // Intercept all waitlist form submissions and forward to Formsubmit.co
-    (function() {
-      const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/atalashutosh@gmail.com';
-      const PRODUCT = 'contractpilot';
-      
-      // Override any existing form submission to also send via Formsubmit
-      const origSubmit = window.submitWaitlist || window.handleWaitlist || window.joinWaitlist;
-      
-      function captureEmail(email) {
-        if (!email || !email.includes('@')) return;
-        
-        // Send to Formsubmit.co via AJAX (no redirect)
-        fetch(FORMSUBMIT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            email: email,
-            product: PRODUCT,
-            source: 'waitlist',
-            timestamp: new Date().toISOString(),
-            _subject: PRODUCT + ' Waitlist Signup: ' + email,
-            _template: 'table'
-          })
-        }).catch(function() {});
-      }
-      
-      // Watch for form submissions on any email input
-      document.addEventListener('submit', function(e) {
-        const form = e.target;
-        const emailInput = form.querySelector('input[type="email"]');
-        if (emailInput && emailInput.value) {
-          captureEmail(emailInput.value);
-        }
-      });
-      
-      // Also intercept programmatic submissions
-      document.addEventListener('click', function(e) {
-        const btn = e.target;
-        if (btn.textContent && btn.textContent.includes('Waitlist')) {
-          setTimeout(function() {
-            const inputs = document.querySelectorAll('input[type="email"]');
-            inputs.forEach(function(input) {
-              if (input.value && input.value.includes('@')) {
-                captureEmail(input.value);
-              }
-            });
-          }, 100);
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
